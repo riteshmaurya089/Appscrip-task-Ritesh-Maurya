@@ -44,12 +44,13 @@ export default function WebPLPWithFilterPage() {
         <div className="flex flex-col items-center gap-[72px] md:gap-[54px] sm:gap-9">
           <div className="flex w-[58%] flex-col items-center gap-[19px] md:w-full">
           <Text
-              size="2xl"
-              as="p"
-              className="text-center uppercase tracking-[1.00px] !text-gray-900"
-            >
-              DISCOVER OUR PRODUCTS
-            </Text>
+  as="h"
+  className="text-[49px] font-semibold text-center uppercase tracking-[1px]  !text-gray-900"
+>
+  DISCOVER OUR PRODUCTS
+</Text>
+
+
 
             <Text
               size="xl"
