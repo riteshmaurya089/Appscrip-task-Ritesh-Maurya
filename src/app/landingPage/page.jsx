@@ -213,7 +213,7 @@ export default function WebPLPWithFilterPage() {
               )}
 
               {/* products section */}
-              <div className="grid flex-1 grid-cols-3 gap-4 md:grid-cols-2 md:self-stretch sm:grid-cols-1">
+              <div className="grid flex-1 grid-cols-3 gap-4 md:grid-cols-2 sm:grid-cols-2">
                 <div className="flex w-full flex-col">
                   <div className="flex flex-col">
                     <div className="relative h-[399px] md:h-auto">
@@ -317,7 +317,7 @@ export default function WebPLPWithFilterPage() {
                       <div className="flex flex-col items-start">
                         <div className="flex flex-col items-start gap-0.5 self-stretch bg-white-A700 pt-3.5">
                           <Heading as="h5" className="uppercase">
-                            Product Name
+                            
                           </Heading>
                           <Img
                             src="img_favorite.svg"
