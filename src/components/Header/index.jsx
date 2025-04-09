@@ -6,8 +6,31 @@ export default function Header({ ...props }) {
   return (
     <header {...props}>
       <div className="flex justify-center self-stretch bg-black-900 py-[7px]">
-        <div className="container-xs flex justify-between gap-5 px-[178px] md:p-5 md:px-5 sm:flex-col">
-          <div className="flex items-center gap-2.5">
+        <div className="container-xs flex justify-between gap-5 px-[178px] md:p-5 md:px-5">
+          {/* Show all three items on large screens, single centered item on small screens */}
+          <div className="hidden sm:flex sm:justify-center sm:w-full">
+            <div className="flex items-center gap-2.5">
+              <Link href="#">
+                <Img
+                  src="img_grid.svg"
+                  width={16}
+                  height={16}
+                  alt="grid"
+                  className="h-[16px] w-[16px]"
+                />
+              </Link>
+              <Text
+                size="xs"
+                as="p"
+                className="self-end tracking-[1.00px] !text-pink-400"
+              >
+                Lorem ipsum dolor
+              </Text>
+            </div>
+          </div>
+          
+          {/* Large screen items */}
+          <div className="flex items-center gap-2.5 sm:hidden">
             <Link href="#">
               <Img
                 src="img_grid.svg"
@@ -25,7 +48,7 @@ export default function Header({ ...props }) {
               Lorem ipsum dolor
             </Text>
           </div>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 sm:hidden">
             <Link href="#">
               <Img
                 src="img_grid.svg"
@@ -43,7 +66,7 @@ export default function Header({ ...props }) {
               Lorem ipsum dolor
             </Text>
           </div>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 sm:hidden">
             <Link href="#">
               <Img
                 src="img_grid.svg"
