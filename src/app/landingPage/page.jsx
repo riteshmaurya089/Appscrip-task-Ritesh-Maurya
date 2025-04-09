@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Img,
   Text,
@@ -29,6 +29,11 @@ const dropDownOptions = [
 
 export default function WebPLPWithFilterPage() {
   const [isFilterVisible, setIsFilterVisible] = useState(true);
+  const [portalTarget, setPortalTarget] = useState(null);
+
+  useEffect(() => {
+    setPortalTarget(document.getElementById("menuPortalTarget"));
+  }, []);
 
   const handleFilterClick = () => {
     setIsFilterVisible(!isFilterVisible);
@@ -41,16 +46,16 @@ export default function WebPLPWithFilterPage() {
 
       {/* hero section */}
       <div className="container-xs md:p-5">
+        <div id="menuPortalTarget"></div> {/* 👈 Add this div */}
         <div className="flex flex-col items-center gap-[72px] md:gap-[54px] sm:gap-9">
           <div className="flex w-[58%] flex-col items-center gap-[19px] md:w-full">
-          <Text
-  as="h"
-  className="text-[49px] font-semibold text-center uppercase tracking-[1px]  !text-gray-900"
->
-  DISCOVER OUR PRODUCTS
-</Text>
-
-
+            <Text
+              size="2xl"
+              as="p"
+              className="text-center uppercase tracking-[1.00px] !text-gray-900"
+            >
+              DISCOVER OUR PRODUCTS
+            </Text>
 
             <Text
               size="xl"
@@ -91,7 +96,7 @@ export default function WebPLPWithFilterPage() {
                   </div>
                 </div>
                 <SelectBox
-                  menuPortalTarget={document.getElementById("menuPortalTarget")}
+                  menuPortalTarget={portalTarget} // ✅ updated here
                   shape="square"
                   indicator={
                     <Img
@@ -109,6 +114,9 @@ export default function WebPLPWithFilterPage() {
                 />
               </div>
             </div>
+
+            {/* The rest of your existing JSX continues as-is */}
+
             <div className="flex items-start gap-4 md:flex-col">
               {isFilterVisible && (
                 <div className="flex w-[24%] flex-col gap-[21px] md:w-full">
