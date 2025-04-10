@@ -145,7 +145,7 @@ export default function Header({ ...props }) {
               <div className="flex items-center gap-4">
                 <Link href="#">
                   <Img
-                    src="img_search.svg"
+                    src="img_contrast.svg"
                     width={24}
                     height={24}
                     alt="search"
