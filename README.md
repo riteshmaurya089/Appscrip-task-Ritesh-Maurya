@@ -22,6 +22,8 @@ The easiest way to deploy your Next.js app is to use the Vercel Platform from th
 
 Check out our Next.js deployment documentation for more details.
 
+Live project screenshot Desktop/laptop(large screen):-
+
 ![Screenshot (2)](https://github.com/user-attachments/assets/0777c737-d6ba-4e0e-b4e7-93b85b143f69)
 
 ![Screenshot (3)](https://github.com/user-attachments/assets/f007a22e-db45-46f9-8424-7a7bb92d0fc3)
