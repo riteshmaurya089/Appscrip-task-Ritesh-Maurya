@@ -44,36 +44,35 @@ export default function WebPLPWithFilterPage() {
       {/* header section */}
       <Header className="self-stretch" />
 
-      {/* hero section */}
       <div className="container-xs md:p-5">
-        <div id="menuPortalTarget"></div> {/* 👈 Add this div */}
-        <div className="flex flex-col items-center gap-[72px] md:gap-[54px] sm:gap-9">
-          <div className="flex w-[58%] flex-col items-center gap-[19px] md:w-full">
-            <Text
-              size="2xl"
-              as="p"
-              className="text-center uppercase tracking-[1.00px] !text-gray-900"
-            >
-              DISCOVER OUR PRODUCTS
-            </Text>
+  <div id="menuPortalTarget"></div>
+  <div className="flex flex-col items-center gap-[72px] md:gap-[54px] sm:gap-9">
+    <div className="flex w-[58%] flex-col items-center gap-[19px] md:w-full sm:w-auto">
+      <Text
+        size="2xl"
+        as="p"
+        className="whitespace-nowrap text-center uppercase tracking-[1.00px] !text-gray-900 sm:text-lg"
+      >
+        DISCOVER OUR PRODUCTS
+      </Text>
 
-            <Text
-              size="xl"
-              as="p"
-              className="w-full text-center leading-10 !text-gray-900"
-            >
-              Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus
-              scelerisque. Dolor integer scelerisque nibh amet mi ut elementum
-              dolor.
-            </Text>
-          </div>
-          <div className="flex flex-col gap-8 self-stretch">
-            <div>
-              <div className="flex items-start justify-between gap-5 border-b-[0.5px] border-solid border-gray-300 bg-white-A700 py-6 pr-6 sm:flex-col sm:py-5 sm:pr-5">
-                <div className="flex w-[25%] items-start justify-between gap-5 sm:w-full">
-                  <Heading as="h1" className="mt-[7px] uppercase">
-                    3425 Items
-                  </Heading>
+      <Text
+        size="xl"
+        as="p"
+        className="w-full text-center leading-10 !text-gray-900 sm:text-base sm:leading-7"
+      >
+        Lorem ipsum dolor sit amet consectetur. Amet est posuere rhoncus
+        scelerisque. Dolor integer scelerisque nibh amet mi ut elementum
+        dolor.
+      </Text>
+    </div>
+    <div className="flex flex-col gap-8 self-stretch">
+      <div>
+        <div className="flex items-start justify-between gap-5 border-b-[0.5px] border-solid border-gray-300 bg-white-A700 py-6 pr-6 sm:flex-col sm:py-5 sm:pr-5">
+          <div className="flex w-[25%] items-start justify-between gap-5 sm:w-full">
+            <Heading as="h1" className="mt-[7px] uppercase">
+              3425 Items
+            </Heading>
                   {/* Filter section */}
                   <div className="relative h-[40px] w-[43%]">
                     <div className="absolute bottom-0 left-0 right-0 top-0 m-auto flex h-max w-full bg-white-A700 py-3">
