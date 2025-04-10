@@ -11,7 +11,7 @@ export default function Header({ ...props }) {
 
   return (
     <header {...props}>
-      {/* Top black bar - unchanged */}
+      {/* Top black bar */}
       <div className="flex justify-center self-stretch bg-black-900 py-[7px]">
         <div className="container-xs flex justify-between gap-5 px-[178px] md:p-5 md:px-5">
           {/* Mobile - single centered item */}
@@ -36,7 +36,7 @@ export default function Header({ ...props }) {
             </div>
           </div>
           
-          {/* Desktop - three items - unchanged */}
+          {/* Desktop - three items */}
           <div className="flex items-center gap-2.5 sm:hidden">
             <Link href="#">
               <Img
@@ -97,12 +97,12 @@ export default function Header({ ...props }) {
       {/* Main header section */}
       <div className="flex justify-center self-stretch border-b border-solid border-gray-300 bg-white-A700 py-[25px] sm:py-3">
         <div className="container-xs mt-2.5 flex flex-col items-center gap-[59px] md:p-5 sm:gap-[29px]">
-          {/* Header content for both desktop and mobile */}
+          {/* Header content */}
           <div className="flex items-center justify-between gap-5 self-stretch md:flex-col sm:w-full">
-            {/* Mobile: Single Line Header - unchanged */}
-            <div className="hidden sm:flex sm:w-full sm:items-center sm:justify-between">
+            {/* Mobile Header */}
+            <div className="hidden sm:flex sm:w-full sm:items-center sm:justify-between sm:px-4">
               {/* Left - Hamburger + Logo */}
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-4">
                 <button onClick={toggleMenu} aria-label="Toggle menu">
                   <svg
                     className="h-6 w-6"
@@ -141,8 +141,17 @@ export default function Header({ ...props }) {
                 LOGO
               </Text>
 
-              {/* Right - Cart + Login */}
-              <div className="flex items-center gap-3">
+              {/* Right - Icons */}
+              <div className="flex items-center gap-4">
+                <Link href="#">
+                  <Img
+                    src="img_search.svg"
+                    width={24}
+                    height={24}
+                    alt="search"
+                    className="h-[24px] w-[24px]"
+                  />
+                </Link>
                 <Link href="#">
                   <Img
                     src="img_bag.svg"
@@ -164,8 +173,8 @@ export default function Header({ ...props }) {
               </div>
             </div>
 
-            {/* Desktop: Modified layout */}
-            <div className="flex items-center justify-between w-full sm:hidden">
+            {/* Desktop Header */}
+            <div className="flex items-center justify-between w-full sm:hidden relative">
               {/* Left - Logo icon */}
               <div className="flex items-center">
                 <Img
@@ -177,14 +186,14 @@ export default function Header({ ...props }) {
                 />
               </div>
 
-              {/* Center - Logo text */}
-              <div className="flex-1 flex justify-center">
-                <Text size="2xl" as="p" className="!text-gray-900">
+              {/* Center - Logo text (absolute centered) */}
+              <div className="absolute left-1/2 transform -translate-x-1/2">
+                <Text size="2xl" as="p" className="!text-gray-900 font-semibold">
                   LOGO
                 </Text>
               </div>
 
-              {/* Right - All icons */}
+              {/* Right - Icons */}
               <div className="flex items-center gap-5">
                 <Link href="#">
                   <Img
@@ -240,7 +249,7 @@ export default function Header({ ...props }) {
             </div>
           </div>
 
-          {/* Desktop navigation - unchanged */}
+          {/* Desktop navigation */}
           <ul className="flex flex-wrap gap-[63px] md:gap-5 sm:hidden">
             {['SHOP', 'SKILLS', 'STORIES', 'ABOUT', 'CONTACT US'].map((item) => (
               <li key={item}>
@@ -253,9 +262,9 @@ export default function Header({ ...props }) {
             ))}
           </ul>
 
-          {/* Mobile navigation - unchanged */}
+          {/* Mobile navigation */}
           {isMenuOpen && (
-            <div className="hidden sm:block w-full">
+            <div className="hidden sm:block w-full px-4">
               <ul className="flex flex-col gap-3 py-2">
                 {['SHOP', 'SKILLS', 'STORIES', 'ABOUT', 'CONTACT US'].map((item) => (
                   <li key={item}>
@@ -274,5 +283,3 @@ export default function Header({ ...props }) {
     </header>
   );
 }
-
-
