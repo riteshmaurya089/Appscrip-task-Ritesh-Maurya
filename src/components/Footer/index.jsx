@@ -1,290 +1,360 @@
-import React from "react";
+import React, { useState } from "react";
 import { Text, Heading, Img, Button, Input } from "./..";
 import Link from "next/link";
 
 export default function Footer({ ...props }) {
+  const [showMettaLinks, setShowMettaLinks] = useState(false);
+  const [showQuickLinks, setShowQuickLinks] = useState(false);
+  const [showFollowUs, setShowFollowUs] = useState(false);
+
+  const toggleMettaLinks = () => setShowMettaLinks(!showMettaLinks);
+  const toggleQuickLinks = () => setShowQuickLinks(!showQuickLinks);
+  const toggleFollowUs = () => setShowFollowUs(!showFollowUs);
+
   return (
-    <footer {...props}>
-      <div className="mt-[53px] flex w-[90%] flex-col items-center gap-[39px] md:w-full">
-        <div className="relative h-[591px] self-stretch">
-          <div className="absolute bottom-[14%] left-0 right-0 m-auto flex w-full flex-col items-end">
-            <div className="mt-6 h-px w-full self-stretch bg-white-A700" />
-            <div className="mr-28 mt-[231px] flex gap-2 md:mr-0">
-              <div className="flex rounded-[5px] border border-solid border-red-50 bg-light_blue-800 p-1.5">
-                <Img
-                  src="img_vector.svg"
-                  width={42}
-                  height={11}
-                  alt="vector"
-                  className="my-[5px] h-[11px]"
-                />
+    <footer {...props} className="w-full bg-gray-900">
+      <div className="mx-auto flex w-[90%] max-w-[1200px] flex-col items-center gap-10 py-12 md:w-full md:px-5">
+        {/* Newsletter Section - Hidden on Mobile */}
+        <div className="flex w-full flex-col items-start gap-6 sm:hidden">
+          <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+            Be the first to know
+          </Heading>
+          <Text size="md" as="p" className="!text-white-A700">
+          Sign up for updates from mettā muse.
+          </Text>
+          <div className="flex w-full items-center gap-4">
+            <Input
+              shape="square"
+              name="email"
+              placeholder="Enter your e-mail..."
+              className="w-full"
+            />
+            <Button
+              shape="round"
+              className="min-w-[184px] border border-solid border-white-A700_75 font-medium"
+            >
+              Subscribe
+            </Button>
+          </div>
+        </div>
+
+        {/* Divider - Hidden on Mobile */}
+        <div className="h-px w-full bg-white-A700 opacity-20 sm:hidden" />
+
+        {/* Mobile Only: Call Us & Currency (shown above mettā muse) */}
+        <div className="hidden w-full flex-col gap-6 sm:flex">
+          {/* Call Us (mobile only) */}
+          <div className="flex flex-col gap-3">
+            <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+              Call Us
+            </Heading>
+            <Link href="tel:+442211335360">
+              <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
+                +44 221 133 5360
+              </Text>
+            </Link>
+            <Link href="mailto:customercare@mettamuse.com">
+              <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
+                customercare@mettamuse.com
+              </Text>
+            </Link>
+          </div>
+
+          {/* Currency (mobile only) */}
+          <div className="flex flex-col gap-3">
+            <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+              Currency
+            </Heading>
+            <Text size="s" as="h6" className="!text-white-A700">
+              USD
+            </Text>
+          </div>
+        </div>
+
+        {/* Footer Links */}
+        <div className="flex w-full flex-wrap justify-between gap-8 md:flex-col">
+          {/* mettā muse Links */}
+          <div className="flex w-[30%] min-w-[200px] flex-col gap-4 md:w-full">
+            <div 
+              className="flex items-center justify-between cursor-pointer sm:border-b sm:border-white-A700 sm:border-opacity-20 sm:pb-4"
+              onClick={toggleMettaLinks}
+            >
+              <Heading size="xl" as="h4" className="!text-white-A700">
+                mettā muse
+              </Heading>
+              <Img
+                src={showMettaLinks ? "downlogo.svg" : "downlogo.svg"}
+                width={16}
+                height={16}
+                alt="dropdown"
+                className="h-4 w-4"
+              />
+            </div>
+            <div className={`${!showMettaLinks ? 'sm:hidden' : ''} flex flex-col gap-3`}>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  About Us
+                </Text>
+              </Link>
+              <Link href="Stories" target="_blank" rel="noreferrer">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Stories
+                </Text>
+              </Link>
+              <Link href="Artisans" target="_blank" rel="noreferrer">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Artisans
+                </Text>
+              </Link>
+              <Link href="Boutiques" target="_blank" rel="noreferrer">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Boutiques
+                </Text>
+              </Link>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Contact Us
+                </Text>
+              </Link>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  EU Compliances Docs
+                </Text>
+              </Link>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div className="flex w-[30%] min-w-[200px] flex-col gap-4 md:w-full">
+            <div 
+              className="flex items-center justify-between cursor-pointer sm:border-b sm:border-white-A700 sm:border-opacity-20 sm:pb-4"
+              onClick={toggleQuickLinks}
+            >
+              <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                Quick Links
+              </Heading>
+              <Img
+                src={showQuickLinks ? "downlogo.svg" : "downlogo.svg"}
+                width={16}
+                height={16}
+                alt="dropdown"
+                className="h-4 w-4"
+              />
+            </div>
+            <div className={`${!showQuickLinks ? 'sm:hidden' : ''} flex flex-col gap-3`}>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Orders & Shipping
+                </Text>
+              </Link>
+              <Link href="Join/Login as a Seller" target="_blank" rel="noreferrer">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Join/Login as a Seller
+                </Text>
+              </Link>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Payment & Pricing
+                </Text>
+              </Link>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Return & Refunds
+                </Text>
+              </Link>
+              <Link href="FAQs" target="_blank" rel="noreferrer">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  FAQs
+                </Text>
+              </Link>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Privacy Policy
+                </Text>
+              </Link>
+              <Link href="#">
+                <Text size="lg" as="p" className="!text-white-A700 hover:opacity-80">
+                  Terms & Conditions
+                </Text>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Column (Desktop) - Hidden on Mobile */}
+          <div className="flex w-[30%] min-w-[200px] flex-col gap-6 md:w-full sm:hidden">
+            {/* Contact Us (desktop only) */}
+            <div className="flex flex-col gap-4">
+              <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                Contact Us
+              </Heading>
+              <div className="flex flex-col gap-3">
+                <Link href="tel:+442211335360">
+                  <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
+                    +44 221 133 5360
+                  </Text>
+                </Link>
+                <Link href="mailto:customercare@mettamuse.com">
+                  <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
+                    customercare@mettamuse.com
+                  </Text>
+                </Link>
               </div>
-              <div className="flex rounded-[5px] border border-solid border-red-50 bg-white-A700 p-2">
+            </div>
+
+            {/* Currency (desktop only) */}
+            <div className="flex flex-col gap-3">
+              <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                Currency
+              </Heading>
+              <Text size="s" as="h6" className="!text-white-A700">
+                USD
+              </Text>
+            </div>
+
+            {/* Follow Us (desktop only) */}
+            <div className="flex flex-col gap-4">
+              <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                Follow Us
+              </Heading>
+              <div className="flex items-center gap-4">
                 <Img
-                  src="img_settings.svg"
-                  width={39}
-                  height={16}
-                  alt="settings"
-                  className="h-[16px] self-start"
+                  src="img_info.svg"
+                  width={32}
+                  height={32}
+                  alt="info"
+                  className="h-8 w-8"
                 />
-              </div>
-              <div className="flex rounded-[5px] border border-solid border-red-50 bg-deep_purple-A400 p-[7px]">
                 <Img
-                  src="img_settings_white_a700.svg"
-                  width={40}
-                  height={16}
-                  alt="settings"
-                  className="h-[16px] self-start"
+                  src="img_mdi_linkedin.svg"
+                  width={24}
+                  height={24}
+                  alt="linkedin"
+                  className="h-6 w-6"
                 />
               </div>
             </div>
+
+            {/* mettā muse Accepts (desktop only) */}
+            <div>
+              <Heading size="lg" as="h5" className="!text-white-A700">
+                <span className="text-white-A700">mettā muse&nbsp;</span>
+                <span className="uppercase text-white-A700">Accepts</span>
+              </Heading>
+            </div>
           </div>
-          <div className="absolute bottom-0 left-[0.00px] top-0 my-auto flex h-max w-full max-w-[983px] md:p-5">
-            <div className="flex w-full items-start justify-between gap-5 md:flex-col">
-              <div className="flex w-[59%] flex-col items-start md:w-full">
-                <Heading
-                  size="lg"
-                  as="h5"
-                  className="uppercase !text-white-A700"
-                >
-                  Be the first to know
+
+          {/* Mobile Only: Follow Us & Accepts */}
+          <div className="hidden w-full flex-col gap-6 sm:flex">
+            {/* Follow Us (mobile only) */}
+            <div className="flex flex-col gap-4">
+              <div 
+                className="flex items-center justify-between cursor-pointer border-b border-white-A700 border-opacity-20 pb-4"
+                onClick={toggleFollowUs}
+              >
+                <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                  Follow Us
                 </Heading>
-                <Text size="md" as="p" className="mt-6 !text-white-A700">
-                  Sign up for updates from mettā muse.
-                </Text>
-                <div className="mt-[50px] flex items-center gap-4 self-stretch sm:flex-col">
-                  <Input
-                    shape="square"
-                    name="email"
-                    placeholder={`Enter your e-mail...`}
-                    className="sm:px-5"
-                  />
-                  <Button
-                    shape="round"
-                    className="min-w-[184px] border border-solid border-white-A700_75 font-medium opacity-0.3 sm:px-5"
-                  >
-                    Subscribe
-                  </Button>
-                </div>
-                <div className="mt-[126px] flex w-[92%] items-start justify-between gap-5 md:w-full">
-                  <div className="flex flex-col items-start gap-[18px]">
-                    <Heading
-                      size="xl"
-                      as="h4"
-                      className="!text-[24.71px] !text-white-A700"
-                    >
-                      mettā muse
-                    </Heading>
-                    <ul className="flex flex-col items-start gap-[15px]">
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            About Us
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="Stories" target="_blank" rel="noreferrer">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Stories
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="Artisans" target="_blank" rel="noreferrer">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Artisans
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="Boutiques" target="_blank" rel="noreferrer">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Boutiques
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Contact Us
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            EU Compliances Docs
-                          </Text>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  <div className="flex flex-col items-start gap-[25px]">
-                    <Heading
-                      size="lg"
-                      as="h5"
-                      className="uppercase !text-white-A700"
-                    >
-                      Quick Links
-                    </Heading>
-                    <ul className="flex flex-col items-start gap-[15px]">
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Orders & Shipping
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link
-                          href="Join/Login as a Seller"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Join/Login as a Seller
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Payment & Pricing
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Return & Refunds
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="FAQs" target="_blank" rel="noreferrer">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            FAQs
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Privacy Policy
-                          </Text>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="#">
-                          <Text size="lg" as="p" className="!text-white-A700">
-                            Terms & Conditions
-                          </Text>
-                        </Link>
-                      </li>
-                    </ul>
+                <Img
+                  src={showFollowUs ? "downlogo.svg" : "downlogo.svg"}
+                  width={16}
+                  height={16}
+                  alt="dropdown"
+                  className="h-4 w-4"
+                />
+              </div>
+              {showFollowUs && (
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-4">
+                    <Img
+                      src="img_info.svg"
+                      width={32}
+                      height={32}
+                      alt="info"
+                      className="h-8 w-8"
+                    />
+                    <Img
+                      src="img_mdi_linkedin.svg"
+                      width={24}
+                      height={24}
+                      alt="linkedin"
+                      className="h-6 w-6"
+                    />
                   </div>
                 </div>
-              </div>
-              <div className="relative h-[454px] w-[23%] md:h-auto md:w-full">
-                <div className="flex flex-col items-start gap-[15px]">
-                  <Heading
-                    size="lg"
-                    as="h5"
-                    className="uppercase !text-white-A700"
-                  >
-                    CONTACT US
-                  </Heading>
-                  <ul className="flex flex-col items-start">
-                    <li>
-                      <Link href="#">
-                        <Text size="md" as="p" className="!text-white-A700">
-                          +44 221 133 5360
-                        </Text>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="customercare@mettamuse.com"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-4"
-                      >
-                        <Text size="md" as="p" className="!text-white-A700">
-                          customercare@mettamuse.com
-                        </Text>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link
-                        href="Currency"
-                        target="_blank"
-                        rel="noreferrer"
-                        className="mt-[22px]"
-                      >
-                        <Heading
-                          size="lg"
-                          as="h5"
-                          className="uppercase !text-white-A700"
-                        >
-                          Currency
-                        </Heading>
-                      </Link>
-                    </li>
-                    <li>
-                      <div className="mt-[152px] flex flex-col items-start gap-[25px]">
-                        <Link href="#">
-                          <Heading
-                            size="lg"
-                            as="h5"
-                            className="uppercase !text-white-A700"
-                          >
-                            Follow Us
-                          </Heading>
-                        </Link>
-                        <div className="flex items-center gap-4">
-                          <Img
-                            src="img_info.svg"
-                            width={32}
-                            height={32}
-                            alt="info"
-                            className="h-[32px] w-[32px]"
-                          />
-                          <Img
-                            src="img_mdi_linkedin.svg"
-                            width={24}
-                            height={24}
-                            alt="mdilinkedin"
-                            className="h-[24px] w-[24px]"
-                          />
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <Link href="#" className="mt-[55px]">
-                        <Heading size="lg" as="h5" className="!text-white-A700">
-                          <span className="text-white-A700">
-                            mettā muse&nbsp;
-                          </span>
-                          <span className="uppercase text-white-A700">
-                            Accepts
-                          </span>
-                        </Heading>
-                      </Link>
-                    </li>
-                  </ul>
-                </div>
-                <Heading
-                  size="s"
-                  as="h6"
-                  className="absolute left-[18%] top-[35%] m-auto tracking-[1.00px] !text-white-A700"
-                >
-                  USD
-                </Heading>
-              </div>
+              )}
+            </div>
+
+            {/* mettā muse Accepts (mobile only) - Now outside Follow Us dropdown */}
+            <div className="mt-4">
+              <Heading size="lg" as="h5" className="!text-white-A700">
+                <span className="text-white-A700">mettā muse&nbsp;</span>
+                <span className="uppercase text-white-A700">Accepts</span>
+              </Heading>
             </div>
           </div>
         </div>
+
+        {/* Payment Icons */}
+        <div className="flex gap-2">
+          <div className="flex rounded border border-red-50 border-opacity-50 bg-light_blue-800 p-1.5">
+            <Img
+              src="img_vector.svg"
+              width={39}
+              height={16}
+              alt="payment"
+              className="my-1 h-[11px]"
+            />
+          </div>
+          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+            <Img
+              src="img_settings.svg"
+              width={39}
+              height={16}
+              alt="payment"
+              className="h-4"
+            />
+          </div>
+          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+            <Img
+              src="paypal.svg"
+              width={39}
+              height={16}
+              alt="payment"
+              className="h-4"
+            />
+          </div>
+          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+            <Img
+              src="gpay.svg"
+              width={39}
+              height={16}
+              alt="payment"
+              className="h-4"
+            />
+          </div>
+
+          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+            <Img
+              src="voda.svg"
+              width={39}
+              height={16}
+              alt="payment"
+              className="h-4"
+            />
+          </div>
+          
+          <div className="flex rounded border border-red-50 border-opacity-50 bg-deep_purple-A400 p-1.5">
+            <Img
+              src="img_settings_white_a700.svg"
+              width={40}
+              height={16}
+              alt="payment"
+              className="h-4"
+            />
+          </div>
+        </div>
+
+        {/* Copyright */}
         <Text as="p" className="text-center !text-white-A700">
           Copyright © 2023 mettamuse. All rights reserved.
         </Text>
