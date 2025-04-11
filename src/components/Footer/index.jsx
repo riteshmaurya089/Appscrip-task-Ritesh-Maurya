@@ -14,34 +14,80 @@ export default function Footer({ ...props }) {
   return (
     <footer {...props} className="w-full bg-gray-900">
       <div className="mx-auto flex w-[90%] max-w-[1200px] flex-col items-center gap-10 py-12 md:w-full md:px-5">
-        {/* Newsletter Section - Hidden on Mobile */}
-        <div className="flex w-full flex-col items-start gap-6 sm:hidden">
-          <Heading size="lg" as="h5" className="uppercase !text-white-A700">
-            Be the first to know
-          </Heading>
-          <Text size="md" as="p" className="!text-white-A700">
-          Sign up for updates from mettā muse.
-          </Text>
-          <div className="flex w-full items-center gap-4">
-            <Input
-              shape="square"
-              name="email"
-              placeholder="Enter your e-mail..."
-              className="w-full"
-            />
-            <Button
-              shape="round"
-              className="min-w-[184px] border border-solid border-white-A700_75 font-medium"
-            >
-              Subscribe
-            </Button>
+        {/* Top Section with Newsletter and Contact Info */}
+        <div className="flex w-full flex-col gap-6 sm:hidden">
+          <div className="flex w-full items-start justify-between">
+            {/* Newsletter Section */}
+            <div className="flex w-[60%] flex-col gap-6">
+              <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                Be the first to know
+              </Heading>
+              <Text size="md" as="p" className="!text-white-A700">
+                Sign up for updates from mettā muse.
+              </Text>
+              <div className="flex w-full items-center gap-4">
+                <Input
+                  shape="square"
+                  name="email"
+                  placeholder="Enter your e-mail..."
+                  className="w-full"
+                />
+                <Button
+                  shape="round"
+                  className="min-w-[184px] border border-solid border-white-A700_75 font-medium"
+                >
+                  Subscribe
+                </Button>
+              </div>
+            </div>
+
+            {/* Contact Us and Currency (Right side) */}
+            <div className="flex w-[35%] flex-col gap-6">
+              {/* Contact Us */}
+              <div className="flex flex-col gap-4">
+                <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                  Contact Us
+                </Heading>
+                <div className="flex flex-col gap-3">
+                  <Link href="tel:+442211335360">
+                    <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
+                      +44 221 133 5360
+                    </Text>
+                  </Link>
+                  <Link href="mailto:customercare@mettamuse.com">
+                    <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
+                      customercare@mettamuse.com
+                    </Text>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Currency with Flag */}
+              <div className="flex flex-col gap-3">
+                <Heading size="lg" as="h5" className="uppercase !text-white-A700">
+                  Currency
+                </Heading>
+                <div className="flex items-center gap-2">
+                  <Img
+                    src="usa.svg" // Replace with your US flag image path
+                    width={24}
+                    height={16}
+                    alt="US flag"
+                    className="h-4 w-6"
+                  />
+                  <Text size="s" as="h6" className="!text-white-A700">
+                    USD
+                  </Text>
+                </div>
+              </div>
+            </div>
           </div>
+          
+          {/* Divider */}
+          <div className="h-px w-full bg-white-A700 opacity-20" />
         </div>
 
-        {/* Divider - Hidden on Mobile */}
-        <div className="h-px w-full bg-white-A700 opacity-20 sm:hidden" />
-
-        {/* Mobile Only: Call Us & Currency (shown above mettā muse) */}
+        {/* Mobile Only: Call Us & Currency */}
         <div className="hidden w-full flex-col gap-6 sm:flex">
           {/* Call Us (mobile only) */}
           <div className="flex flex-col gap-3">
@@ -60,14 +106,23 @@ export default function Footer({ ...props }) {
             </Link>
           </div>
 
-          {/* Currency (mobile only) */}
+          {/* Currency with Flag (mobile only) */}
           <div className="flex flex-col gap-3">
             <Heading size="lg" as="h5" className="uppercase !text-white-A700">
               Currency
             </Heading>
-            <Text size="s" as="h6" className="!text-white-A700">
-              USD
-            </Text>
+            <div className="flex items-center gap-2">
+              <Img
+                src="usa.svg" // Replace with your US flag image path
+                width={24}
+                height={16}
+                alt="US flag"
+                className="h-4 w-6"
+              />
+              <Text size="s" as="h6" className="!text-white-A700">
+                USD
+              </Text>
+            </div>
           </div>
         </div>
 
@@ -180,38 +235,9 @@ export default function Footer({ ...props }) {
             </div>
           </div>
 
-          {/* Right Column (Desktop) - Hidden on Mobile */}
+          {/* Right Column (Desktop) - Follow Us and Accepts */}
           <div className="flex w-[30%] min-w-[200px] flex-col gap-6 md:w-full sm:hidden">
-            {/* Contact Us (desktop only) */}
-            <div className="flex flex-col gap-4">
-              <Heading size="lg" as="h5" className="uppercase !text-white-A700">
-                Contact Us
-              </Heading>
-              <div className="flex flex-col gap-3">
-                <Link href="tel:+442211335360">
-                  <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
-                    +44 221 133 5360
-                  </Text>
-                </Link>
-                <Link href="mailto:customercare@mettamuse.com">
-                  <Text size="md" as="p" className="!text-white-A700 hover:opacity-80">
-                    customercare@mettamuse.com
-                  </Text>
-                </Link>
-              </div>
-            </div>
-
-            {/* Currency (desktop only) */}
-            <div className="flex flex-col gap-3">
-              <Heading size="lg" as="h5" className="uppercase !text-white-A700">
-                Currency
-              </Heading>
-              <Text size="s" as="h6" className="!text-white-A700">
-                USD
-              </Text>
-            </div>
-
-            {/* Follow Us (desktop only) */}
+            {/* Follow Us */}
             <div className="flex flex-col gap-4">
               <Heading size="lg" as="h5" className="uppercase !text-white-A700">
                 Follow Us
@@ -234,12 +260,68 @@ export default function Footer({ ...props }) {
               </div>
             </div>
 
-            {/* mettā muse Accepts (desktop only) */}
-            <div>
+            {/* mettā muse Accepts with Payment Methods */}
+            <div className="flex flex-col gap-4">
               <Heading size="lg" as="h5" className="!text-white-A700">
                 <span className="text-white-A700">mettā muse&nbsp;</span>
                 <span className="uppercase text-white-A700">Accepts</span>
               </Heading>
+              <div className="flex items-center justify-start gap-2 py-1">
+                <div className="rounded border border-red-50 border-opacity-50 bg-light_blue-800 p-1.5">
+                  <Img
+                    src="img_vector.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="my-1 h-[11px]"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="img_settings.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="paypal.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="gpay.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="voda.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-deep_purple-A400 p-1.5">
+                  <Img
+                    src="img_settings_white_a700.svg"
+                    width={40}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+              </div>
             </div>
           </div>
 
@@ -284,73 +366,69 @@ export default function Footer({ ...props }) {
               )}
             </div>
 
-            {/* mettā muse Accepts (mobile only) - Now outside Follow Us dropdown */}
-            <div className="mt-4">
+            {/* mettā muse Accepts with Payment Methods (mobile only) */}
+            <div className="flex flex-col gap-4">
               <Heading size="lg" as="h5" className="!text-white-A700">
                 <span className="text-white-A700">mettā muse&nbsp;</span>
                 <span className="uppercase text-white-A700">Accepts</span>
               </Heading>
+              <div className="flex items-center justify-start gap-2 py-1">
+                <div className="rounded border border-red-50 border-opacity-50 bg-light_blue-800 p-1.5">
+                  <Img
+                    src="img_vector.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="my-1 h-[11px]"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="img_settings.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="paypal.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="gpay.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
+                  <Img
+                    src="voda.svg"
+                    width={39}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+                <div className="rounded border border-red-50 border-opacity-50 bg-deep_purple-A400 p-1.5">
+                  <Img
+                    src="img_settings_white_a700.svg"
+                    width={40}
+                    height={16}
+                    alt="payment"
+                    className="h-4"
+                  />
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-
-        {/* Payment Icons */}
-        <div className="flex gap-2">
-          <div className="flex rounded border border-red-50 border-opacity-50 bg-light_blue-800 p-1.5">
-            <Img
-              src="img_vector.svg"
-              width={39}
-              height={16}
-              alt="payment"
-              className="my-1 h-[11px]"
-            />
-          </div>
-          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
-            <Img
-              src="img_settings.svg"
-              width={39}
-              height={16}
-              alt="payment"
-              className="h-4"
-            />
-          </div>
-          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
-            <Img
-              src="paypal.svg"
-              width={39}
-              height={16}
-              alt="payment"
-              className="h-4"
-            />
-          </div>
-          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
-            <Img
-              src="gpay.svg"
-              width={39}
-              height={16}
-              alt="payment"
-              className="h-4"
-            />
-          </div>
-
-          <div className="flex rounded border border-red-50 border-opacity-50 bg-white-A700 p-2">
-            <Img
-              src="voda.svg"
-              width={39}
-              height={16}
-              alt="payment"
-              className="h-4"
-            />
-          </div>
-          
-          <div className="flex rounded border border-red-50 border-opacity-50 bg-deep_purple-A400 p-1.5">
-            <Img
-              src="img_settings_white_a700.svg"
-              width={40}
-              height={16}
-              alt="payment"
-              className="h-4"
-            />
           </div>
         </div>
 
